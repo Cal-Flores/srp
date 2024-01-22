@@ -32,5 +32,22 @@
 
 
 var maxSubArray = function (nums) {
+    var maxSubArray = function (nums) {
+        if (nums.length === 0) {
+            return 0;
+        }
 
+        let maxSum = nums[0];
+        let currentSum = nums[0];
+
+        for (let i = 1; i < nums.length; i++) {
+            // Choose between extending the current subarray or starting a new one
+            currentSum = Math.max(nums[i], currentSum + nums[i]);
+
+            // Update the maximum subarray sum
+            maxSum = Math.max(maxSum, currentSum);
+        }
+
+        return maxSum;
+    };
 };
