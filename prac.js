@@ -74,3 +74,53 @@ var maxSubArray = function (nums) {
 // Input: intervals = [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], newInterval = [4, 8]
 // Output: [[1, 2], [3, 10], [12, 16]]
 // Explanation: Because the new interval[4, 8] overlaps with [3, 5], [6, 7], [8, 10].
+// Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
+
+// The distance between two adjacent cells is 1.
+
+/**
+ * @param {number[][]} mat
+ * @return {number[][]}
+ */
+var updateMatrix = function (mat) {
+    const rows = mat.length;
+    const cols = mat[0].length;
+    const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+
+    const bfs = (queue) => {
+        let distance = 0;
+        while (queue.length > 0) {
+            const size = queue.length;
+            for (let i = 0; i < size; i++) {
+                const [row, col] = queue.shift();
+                if (mat[row][col] === 0) {
+                    return distance;
+                }
+                for (const [dx, dy] of directions) {
+                    const newRow = row + dx;
+                    const newCol = col + dy;
+                    if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
+                        queue.push([newRow, newCol]);
+                    }
+                }
+            }
+            distance++;
+        }
+        return -1; // Should not reach here
+    };
+
+    const result = [];
+    for (let i = 0; i < rows; i++) {
+        result.push([]);
+        for (let j = 0; j < cols; j++) {
+            if (mat[i][j] === 0) {
+                result[i][j] = 0;
+            } else {
+                const queue = [[i, j]];
+                result[i][j] = bfs(queue);
+            }
+        }
+    }
+
+    return result;
+};
