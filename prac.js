@@ -124,3 +124,25 @@ var updateMatrix = function (mat) {
 
     return result;
 };
+
+
+var lengthOfLongestSubstring = function (s) {
+    let charIndexMap = {};
+    let start = 0;
+    let maxLength = 0;
+
+    for (let end = 0; end < s.length; end++) {
+        const char = s[end];
+
+        if (char in charIndexMap && charIndexMap[char] >= start) {
+            start = charIndexMap[char] + 1;
+        }
+
+        charIndexMap[char] = end;
+        maxLength = Math.max(maxLength, end - start + 1);
+    }
+
+    return maxLength;
+};
+
+//
