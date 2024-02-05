@@ -352,52 +352,6 @@ const getRottenOranges = (grid) => {
     return rottenOranges;
 }
 
-const bfs = (grid, rottenOranges) => {
-    const deltas = [
-        [-1, 0],
-        [1, 0],
-        [0, -1],
-        [0, 1],
-    ];
-    const visited = new Set();
-    const queue = [];
-    // Make sure this is initialized correctly to avoid adding an
-    // minute.
-    let minutes = -1;
-    for (const rottenOrange of rottenOranges) {
-        const [r, c] = rottenOrange;
-        const posKey = getPosKey(r, c);
-        queue.push(posKey);
-        visited.add(posKey);
-    }
-    while (queue.length > 0) {
-        const len = queue.length;
-        for (let i = 0; i < len; i++) {
-            const posKey = queue.shift();
-            const [row, col] = getPosFromKey(posKey);
-            // Fresh orange is now infected.
-            grid[row][col] = 2;
-            // Add neighbors to queue.
-            for (const [deltaRow, deltaCol] of deltas) {
-                const neighborRow = row + deltaRow;
-                const neighborCol = col + deltaCol;
-                const neighborPosKey = getPosKey(neighborRow, neighborCol);
-                if (
-                    isOutOfBounds(grid, neighborRow, neighborCol) ||
-                    isEmptyCell(grid, neighborRow, neighborCol) ||
-                    visited.has(neighborPosKey)
-                ) {
-                    continue;
-                }
-                visited.add(neighborPosKey);
-                queue.push(neighborPosKey);
-            }
-        }
-        minutes++;
-    }
-    return minutes;
-}
-
 const hasFreshOranges = (grid) => {
     for (let r = 0; r < grid.length; r++) {
         for (let c = 0; c < grid[0].length; c++) {
@@ -483,3 +437,30 @@ var orangesRotting = function (grid) {
 //         tempList.remove(tempList.size() - 1);
 //     }
 // }
+
+const isMatch = function (string, pattern) {
+    let s = 0, p = 0;
+    let starIdx = -1, pointer = -1;
+
+    while (s < string.length) {
+        if ((p < pattern.length && string[s] === pattern[p]) || pattern[p] === "?") {
+            s++;
+            p++;
+        }
+        else if (p < pattern.length && pattern[p] === "*") {
+            starIdx = p;
+            pointer = s;
+            p++;
+        }
+        else if (starIdx === -1) return false;
+        else {
+            p = starIdx + 1;
+            s = pointer + 1;
+            pointer = s;
+        }
+    }
+    for (let idx = p; idx < pattern.length; idx++) {
+        if (pattern[idx] !== "*") return false;
+    }
+    return true;
+};
