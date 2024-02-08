@@ -509,3 +509,28 @@ var canJump = function (nums) {
 
     return false;
 };
+
+var sortColors = function (nums) {
+
+    let obj = {}
+
+    for (let num of nums) {
+        if (!obj[num]) obj[num] = 0
+        obj[num]++
+    }
+
+    let len = nums.length
+
+    for (let i = 0; i < len; i++) {
+        if (obj[0]) {
+            nums[i] = 0
+            obj[0]--
+        } else if (obj[1]) {
+            nums[i] = 1
+            obj[1]--
+        } else if (obj[2]) {
+            nums[i] = 2
+            obj[2]--
+        }
+    }
+};
