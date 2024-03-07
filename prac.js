@@ -1359,3 +1359,16 @@ RandomizedSet.prototype.getRandom = function () {
  * var param_2 = obj.remove(val)
  * var param_3 = obj.getRandom()
  */
+
+
+const kthSmallest = function (matrix, k) {
+    const q = new MaxPriorityQueue();
+
+    for (let i = 0; i < matrix.length; i++)
+        for (let j = 0; j < matrix.length; j++) {
+            q.enqueue(matrix[i][j]);
+            if (q.size() > k) q.dequeue();
+        }
+
+    return q.front().element;
+};
