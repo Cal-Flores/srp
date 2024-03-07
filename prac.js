@@ -1270,3 +1270,35 @@ var canConstruct = function (ransomNote, magazine) {
     if (!ransomNote) return true;
     else return false;
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ */
+var Solution = function (head) {
+    this.range = [];
+    while (head !== null) {
+        this.range.push(head)
+        head = head.next;
+    }
+};
+
+/**
+ * @return {number}
+ */
+Solution.prototype.getRandom = function () {
+    return this.range[Math.floor(Math.random() * this.range.length)].val
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * var obj = new Solution(head)
+ * var param_1 = obj.getRandom()
+ */
