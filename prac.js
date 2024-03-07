@@ -1261,3 +1261,12 @@ var countDigitOne = function (n) {
     var answer = parseInt(n / base);
     return countDigitOne(base - 1) * answer + (answer === 1 ? (n - base + 1) : base) + countDigitOne(n % base);
 };
+
+var canConstruct = function (ransomNote, magazine) {
+    for (const char of magazine) {
+        ransomNote = ransomNote.replace(char, "");
+    }
+
+    if (!ransomNote) return true;
+    else return false;
+};
