@@ -236,3 +236,85 @@ function explore(row, col, grid) {
     explore(row - 1, col, grid)
 
 }
+
+const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+let nr = 0;
+let nc = 0;
+
+var numIslands = function (grid) {
+    if (grid == null || grid.length == 0)
+        return 0;
+
+    nr = grid.length;
+    nc = grid[0].length;
+    let counter = 0;
+
+    for (let r = 0; r < nr; r++) {
+        for (let c = 0; c < nc; c++) {
+            if (grid[r][c] == '1') {
+                counter++;
+                // uncomment one of the following lines
+                // dfsIterative(grid, r, c);
+                // dfs(grid, r, c);
+                // bfs(grid, r, c);
+            }
+        }
+    }
+
+    return counter;
+};
+
+function outOfBounds(grid, r, c) {
+    if (r < 0 || c < 0) return true;
+    if (r >= nr || c >= nc) return true;
+    if (grid[r][c] == '0') return true;
+    return false;
+}
+
+function bfs(grid, r, c) {
+    let queue = [[r, c]];
+
+    while (queue.length > 0) {
+        let [r, c] = queue.shift();
+
+        if (outOfBounds(grid, r, c))
+            continue;
+
+        grid[r][c] = '0';
+
+        for (let d of directions) {
+            let newRow = (r + d[0]), newColumn = (c + d[1]);
+            queue.push([newRow, newColumn]);
+        }
+    }
+}
+
+function dfs(grid, r, c) {
+    if (outOfBounds(grid, r, c))
+        return;
+
+    grid[r][c] = '0';
+
+    for (let d of directions) {
+        let newRow = (r + d[0]), newColumn = (c + d[1]);
+        dfs(grid, newRow, newColumn);
+    }
+}
+
+function dfsIterative(grid, r, c) {
+    let stack = [[r, c]];
+
+    while (stack.length > 0) {
+        let [r, c] = stack.pop();
+
+        if (outOfBounds(grid, r, c))
+            continue;
+
+        grid[r][c] = '0';
+
+        for (let d of directions) {
+            let newRow = (r + d[0]), newColumn = (c + d[1]);
+            stack.push([newRow, newColumn]);
+        }
+    }
+}
