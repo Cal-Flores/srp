@@ -349,3 +349,70 @@ var numIslands = function (grid) {
 
     return output;
 };
+
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var orangesRotting = function (grid) {
+    let isValid = (r, c) => {
+        return r >= 0 && c >= 0 && r < grid.length && c < grid[r].length && grid[r][c] === 1;
+    }
+    let rottenOrangesIndexes = [];
+    let orangeCount = 0;
+
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
+            if (grid[i][j] === 2) {
+                rottenOrangesIndexes.push([i, j]);
+            }
+            if (grid[i][j] === 1 || grid[i][j] === 2)
+                orangeCount++;
+        }
+    }
+
+    //if no orange is present then it would take 0 min
+    if (orangeCount === 0) {
+        return 0;
+    }
+
+    let queue = [...rottenOrangesIndexes];
+    let seen = [];
+
+    for (let i = 0; i < grid.length; i++) {
+        seen.push(new Array(grid[i].length).fill(false));
+    }
+    for (let i = 0; i < queue.length; i++) {
+        seen[queue[i][0]][queue[i][1]] = true;
+    }
+    let dir = [[0, 1], [1, 0], [-1, 0], [0, -1]];
+    let min = 0;
+    let rottenOrangeCount = queue.length;
+    while (queue.length) {
+        let nextQueue = [];
+
+        //  iterate the current rotten index of oranges in queue
+        for (const [row, col] of queue) {
+            //iterate the dir array for next index of row and col
+            for (let [dx, dy] of dir) {
+                let nRow = row + dx;
+                let nCol = col + dy;
+                //  check if the new index is valid and a fresh orange exist in it, also that we havent visited it yet
+                if (isValid(nRow, nCol) && !seen[nRow][nCol]) {
+                    //    increase the count of orange rotten and update the seen array while pushing the new index to the nextQueue
+                    rottenOrangeCount++;
+                    nextQueue.push([nRow, nCol]);
+                    seen[nRow][nCol] = true;
+                }
+            }
+        }
+        //increase the min count
+        min++;
+        //assign the queue a new array to iterate
+        queue = nextQueue;
+    }
+    //if total  orangeCount is equal to the total oranges which got rotten then its possible else return -1
+    return rottenOrangeCount === orangeCount ? min - 1 : -1;
+
+};
