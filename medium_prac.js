@@ -270,21 +270,3 @@ function outOfBounds(grid, r, c) {
     if (grid[r][c] == '0') return true;
     return false;
 }
-
-function bfs(grid, r, c) {
-    let queue = [[r, c]];
-
-    while (queue.length > 0) {
-        let [r, c] = queue.shift();
-
-        if (outOfBounds(grid, r, c))
-            continue;
-
-        grid[r][c] = '0';
-
-        for (let d of directions) {
-            let newRow = (r + d[0]), newColumn = (c + d[1]);
-            queue.push([newRow, newColumn]);
-        }
-    }
-}
