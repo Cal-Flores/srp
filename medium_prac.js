@@ -263,10 +263,3 @@ var numIslands = function (grid) {
 
     return counter;
 };
-
-function outOfBounds(grid, r, c) {
-    if (r < 0 || c < 0) return true;
-    if (r >= nr || c >= nc) return true;
-    if (grid[r][c] == '0') return true;
-    return false;
-}
