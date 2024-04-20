@@ -266,16 +266,4 @@ function expectedScore(playerRating, opponentRating) {
 }
 
 // Function to update Elo rating after a match
-function updateRating(playerRating, opponentRating, actualScore, kFactor = 32) {
-    const expected = expectedScore(playerRating, opponentRating);
-    const newRating = playerRating + kFactor * (actualScore - expected);
-    return Math.round(newRating);
-}
 
-// Example usage
-const playerRating = 1200; // Initial rating of the player
-const opponentRating = 1000; // Rating of the opponent
-const actualScore = 1; // 1 if player wins, 0.5 for a draw, 0 for a loss
-
-const newRating = updateRating(playerRating, opponentRating, actualScore);
-console.log("New rating:", newRating);
