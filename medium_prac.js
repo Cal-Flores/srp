@@ -231,3 +231,31 @@ const actualScore = 1; // 1 if player wins, 0.5 for a draw, 0 for a loss
 
 const newRating = updateRating(playerRating, opponentRating, actualScore);
 console.log("New rating:", newRating);
+
+class EloRatingSystem {
+    constructor(kFactor = 32) {
+        this.kFactor = kFactor;
+    }
+
+    // Function to calculate the expected score of a player
+    expectedScore(playerRating, opponentRating) {
+        return 1 / (1 + Math.pow(10, (opponentRating - playerRating) / 400));
+    }
+
+    // Function to update Elo rating after a match
+    updateRating(playerRating, opponentRating, actualScore) {
+        const expected = this.expectedScore(playerRating, opponentRating);
+        const newRating = playerRating + this.kFactor * (actualScore - expected);
+        return Math.round(newRating);
+    }
+}
+
+// Example usage
+const eloSystem = new EloRatingSystem(); // Create Elo rating system with default K-factor
+
+const playerRating = 1200; // Initial rating of the player
+const opponentRating = 1000; // Rating of the opponent
+const actualScore = 1; // 1 if player wins, 0.5 for a draw, 0 for a loss
+
+const newRating = eloSystem.updateRating(playerRating, opponentRating, actualScore);
+console.log("New rating:", newRating);
