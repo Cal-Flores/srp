@@ -251,3 +251,84 @@ class EloRatingSystem {
 }
 
 // Example usage
+
+class PriorityQueue {
+    constructor() {
+        this.heap = [];
+    }
+
+    enqueue(value, priority) {
+        const newNode = { value, priority };
+        this.heap.push(newNode);
+        this.bubbleUp();
+    }
+
+    bubbleUp() {
+        let index = this.heap.length - 1;
+        const newNode = this.heap[index];
+        while (index > 0) {
+            const parentIndex = Math.floor((index - 1) / 2);
+            const parent = this.heap[parentIndex];
+            if (newNode.priority >= parent.priority) break;
+            this.heap[parentIndex] = newNode;
+            this.heap[index] = parent;
+            index = parentIndex;
+        }
+    }
+
+    dequeue() {
+        const min = this.heap[0];
+        const end = this.heap.pop();
+        if (this.heap.length > 0) {
+            this.heap[0] = end;
+            this.sinkDown();
+        }
+        return min.value;
+    }
+
+    sinkDown() {
+        let index = 0;
+        const length = this.heap.length;
+        const element = this.heap[0];
+        while (true) {
+            let leftChildIndex = 2 * index + 1;
+            let rightChildIndex = 2 * index + 2;
+            let leftChild, rightChild;
+            let swap = null;
+
+            if (leftChildIndex < length) {
+                leftChild = this.heap[leftChildIndex];
+                if (leftChild.priority < element.priority) {
+                    swap = leftChildIndex;
+                }
+            }
+            if (rightChildIndex < length) {
+                rightChild = this.heap[rightChildIndex];
+                if (
+                    (swap === null && rightChild.priority < element.priority) ||
+                    (swap !== null && rightChild.priority < leftChild.priority)
+                ) {
+                    swap = rightChildIndex;
+                }
+            }
+            if (swap === null) break;
+            this.heap[index] = this.heap[swap];
+            this.heap[swap] = element;
+            index = swap;
+        }
+    }
+
+    isEmpty() {
+        return this.heap.length === 0;
+    }
+}
+
+// Example usage:
+const pq = new PriorityQueue();
+pq.enqueue('A', 2);
+pq.enqueue('B', 3);
+pq.enqueue('C', 1);
+
+while (!pq.isEmpty()) {
+    console.log(pq.dequeue());
+}
