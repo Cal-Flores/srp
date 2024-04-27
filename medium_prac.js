@@ -508,3 +508,25 @@ function twoSum(nums, target) {
 const nums = [2, 7, 11, 15];
 const target = 9;
 console.log(twoSum(nums, target)); // Output: [0, 1]
+
+function reverse(x) {
+    const INT_MAX = Math.pow(2, 31) - 1;
+    const INT_MIN = -Math.pow(2, 31);
+
+    let reversed = 0;
+    while (x !== 0) {
+        const digit = x % 10;
+        reversed = reversed * 10 + digit;
+        x = parseInt(x / 10);
+    }
+
+    if (reversed > INT_MAX || reversed < INT_MIN) {
+        return 0;
+    }
+
+    return reversed;
+}
+
+// Example usage:
+const x = 123;
+console.log(reverse(x)); // Output: 321
