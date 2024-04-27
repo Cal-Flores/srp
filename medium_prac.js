@@ -506,3 +506,7 @@ function twoSum(nums, target) {
 
 // Example usage:
 
+lead_singer_mane = input("Lead singers first name: __")
+music_adj = input("Adj: __")
+lead_singer_mane = input("Lead singers first name: __")
+lead_singer_mane = input("Lead singers first name: __")
