@@ -492,3 +492,19 @@ console.log(graph.dijkstra("A", "E")); // Output: [ 'A', 'C', 'D', 'F', 'E' ]
 
 
 
+function twoSum(nums, target) {
+    const numMap = {};
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (numMap.hasOwnProperty(complement)) {
+            return [numMap[complement], i];
+        }
+        numMap[nums[i]] = i;
+    }
+    return null;
+}
+
+// Example usage:
+const nums = [2, 7, 11, 15];
+const target = 9;
+console.log(twoSum(nums, target)); // Output: [0, 1]
