@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    background-color: #84A373;
+    color: #ffffff;
+    padding: 10px;
+}
+
+header>div {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo {
+    height: 60px;
+    padding-top: 0px 20px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+}
