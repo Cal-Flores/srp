@@ -1425,3 +1425,17 @@ var hasCycle = function (head) {
 
     return false;
 };
+
+from wizardlib import *
+from random import randint
+add_background("images/aquarium3.png")
+def fish():
+num = randint(1, 9)
+fish = add_image(f"images/fish{num}.png", 150)
+y = randint(0, 500)
+position_element(fish, 0, y)
+speed = randint(1, 5)
+animate_right(fish, 1000, speed)
+set_interval(fish, 3)
+for number in range(5):
+    set_interval(fish, 3)
