@@ -228,3 +228,26 @@ def add_background(filename):
         canvas.style.backgroundImage = f"url({filename})"
     else:
         document.querySelector("html").style.backgroundImage = f"url({filename})"
+
+
+def add_background_audio(filename):
+    """
+    Adds background audio which plays when you click the "Start" button.
+
+    Parameters:
+        - filename (str): The filename.
+
+    Example usage:
+        add_background_audio("never-gonna-give-you-up.mp3")
+    """
+
+    element = document.createElement("audio")
+    element.addEventListener(
+        "error", _filename_not_found.bind(None, filename, "add_background_audio")
+    )
+
+    element.src = filename
+    element.id = "bg-music"
+    element.loop = True
+
+    document.body.appendChild(element)
