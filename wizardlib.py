@@ -251,3 +251,30 @@ def add_background_audio(filename):
     element.loop = True
 
     document.body.appendChild(element)
+
+def add_button(text):
+    """
+    Adds a button.
+
+    Parameters:
+        - text (str): The text on the button.
+
+    Returns:
+        - The button element.
+
+    Example usage:
+        button = add_button("Click Me")
+    """
+
+    element = document.createElement("button")
+    element.textContent = text
+    element.style.alignSelf = "flex-start"
+
+    canvas = document.getElementById("canvas")
+
+    if canvas:
+        canvas.appendChild(element)
+    else:
+        document.body.appendChild(element)
+
+    return element
