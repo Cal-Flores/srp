@@ -202,3 +202,29 @@ def add_audio(filename):
     document.body.appendChild(element)
 
     return element
+
+
+
+def add_background(filename):
+    """
+    Adds a background image.
+
+    Parameters:
+        - filename (str): The filename.
+
+    Example usage:
+        add_background("flying-cats.png")
+    """
+
+    element = document.createElement("img")
+    element.addEventListener(
+        "error", _filename_not_found.bind(None, filename, "add_background")
+    )
+    element.src = filename
+
+    canvas = document.getElementById("canvas")
+
+    if canvas:
+        canvas.style.backgroundImage = f"url({filename})"
+    else:
+        document.querySelector("html").style.backgroundImage = f"url({filename})"
