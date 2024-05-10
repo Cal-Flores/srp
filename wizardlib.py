@@ -278,3 +278,37 @@ def add_button(text):
         document.body.appendChild(element)
 
     return element
+
+
+def add_image(filename, size=None):
+    """
+    Adds an image to the page.
+
+    Parameters:
+        - filename (str): The filename.
+        - size (int): The size, in pixels (optional).
+
+    Returns:
+        - The image element.
+
+    Example usage:
+        taco_image = add_image("taco.png")
+    """
+
+    element = document.createElement("img")
+    element.addEventListener(
+        "error", _filename_not_found.bind(None, filename, "add_image")
+    )
+    element.src = filename
+
+    if size:
+        element.style.width = size + "px"
+
+    canvas = document.getElementById("canvas")
+
+    if canvas:
+        canvas.appendChild(element)
+    else:
+        document.body.appendChild(element)
+
+    return element
