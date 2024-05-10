@@ -177,3 +177,28 @@ def _is_valid_element(func_name):
         return wrapper
 
     return decorator
+
+
+def add_audio(filename):
+    """
+    Adds an audio file.
+
+    Parameters:
+        - filename (str): The filename.
+
+    Returns:
+        - The audio element.
+
+    Example usage:
+        audio_element = add_audio("never-gonna-give-you-up.mp3")
+    """
+
+    element = document.createElement("audio")
+    element.addEventListener(
+        "error", _filename_not_found.bind(None, filename, "add_audio")
+    )
+    element.src = filename
+
+    document.body.appendChild(element)
+
+    return element
