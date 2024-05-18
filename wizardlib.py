@@ -140,5 +140,5 @@ _valid_colors = [
     "lightslategray",
     "darkgray",
     "lightgray",
-    "gainsboro",
+
 ]
