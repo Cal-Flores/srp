@@ -192,3 +192,39 @@ def add_text_input(placeholder):
         document.body.appendChild(element)
 
     return element
+
+
+@_is_valid_element("animate_down")
+def animate_down(element, distance, time=8, loop=False):
+    """
+    Animates the element down by the given distance. Can optionally change
+    the amount of time the animation takes and whether the element animates
+    down and up repeatedly.
+
+    Parameters:
+        - element (element): An element to animate.
+        - distance (int): The distance the element should travel (in pixels).
+        - time (int): The amount of seconds the animation should take (optional).
+        - loop (bool): Whether to repeatedly animate down and up.
+
+    Example usage:
+        taco_image = add_image("taco.jpg")
+        animate_down(taco_image, 100)
+    """
+
+    element.style.transition = f"{time}s linear transform"
+    start_button = document.getElementById("start")
+
+    if start_button:
+        start_button.addEventListener(
+            "click",
+            _translate_y.bind(None, element, distance),
+        )
+    else:
+        _translate_y(element, distance)
+
+    if loop:
+        element.animation_direction = "up"
+        element.addEventListener(
+            "transitionend", _loop_animation.bind(None, element, distance)
+        )
