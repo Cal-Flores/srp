@@ -138,7 +138,7 @@ _valid_colors = [
     "dimgray",
     "slategray",
     "lightslategray",
-    "darkgray",
+
 
 
 ]
