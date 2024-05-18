@@ -138,3 +138,30 @@ _valid_colors = [
     "dimgray",
     "slategray",
 ]
+def add_text(text, size=18):
+    """
+    Adds text to the page.
+
+    Parameters:
+        - text (str): The text to add to the page.
+        - size (int): The size, in pixels (optional).
+
+    Returns:
+        - The text element.
+
+    Example usage:
+        wizardlib_text = add_text("Wizardlib is cool!")
+    """
+
+    element = document.createElement("p")
+    element.textContent = text
+    element.style.fontSize = size + "px"
+
+    canvas = document.getElementById("canvas")
+
+    if canvas:
+        canvas.appendChild(element)
+    else:
+        document.body.appendChild(element)
+
+    return element
