@@ -165,3 +165,30 @@ def add_text(text, size=18):
         document.body.appendChild(element)
 
     return element
+
+
+def add_text_input(placeholder):
+    """
+    Adds a text input to the page.
+
+    Parameters:
+        - placeholder (str): The text to display in the input box.
+
+    Returns:
+        - The text input element.
+
+    Example usage:
+        text_input = add_text_input("Enter your password:")
+    """
+
+    element = document.createElement("input")
+    element.placeholder = placeholder
+
+    canvas = document.getElementById("canvas")
+
+    if canvas:
+        canvas.appendChild(element)
+    else:
+        document.body.appendChild(element)
+
+    return element
