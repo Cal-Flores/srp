@@ -1425,3 +1425,8 @@ var hasCycle = function (head) {
 
     return false;
 };
+olypians = ['Lee', 'Retherford', 'Dake', 'Brooks', 'Snyder', 'Parris']
+
+for (let i = 0; i < 100; i++) {
+    console.log(olypians[i])
+}
