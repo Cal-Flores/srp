@@ -327,3 +327,40 @@ def animate_down(element, distance, time=8, loop=False):
             lambda _: _loop_animation(element, distance)
         )
         element.addEventListener("transitionend", callback_function_proxy)
+def animate_down(element, distance, time=8, loop=False):
+    """
+    Animates the element down by the given distance. Can optionally change
+    the amount of time the animation takes and whether the element animates
+    down and up repeatedly.
+
+    Parameters:
+        - element (element): An element to animate.
+        - distance (int): The distance the element should travel (in pixels).
+        - time (int): The amount of seconds the animation should take (optional).
+        - loop (bool): Whether to repeatedly animate down and up.
+
+    Example usage:
+        taco_image = add_image("taco.jpg")
+        animate_down(taco_image, 100)
+    """
+
+    element.style.transition = f"{time}s linear transform"
+    start_button = document.getElementById("start")
+
+    element.distance = distance
+    element.time = time
+    element.animation_direction = "down"
+    element.start_position = int(element.style.top[:-2])
+
+    callback_function = create_once_callable(lambda _: _translate_y(element, distance))
+
+    start_button.addEventListener("click", callback_function)
+    if set_interval_called:
+        _translate_y(element, distance)
+
+    if loop:
+        element.animation_direction = "up"
+        callback_function_proxy = create_proxy(
+            lambda _: _loop_animation(element, distance)
+        )
+        element.addEventListener("transitionend", callback_function_proxy)
