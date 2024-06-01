@@ -228,3 +228,64 @@ def animate_down(element, distance, time=8, loop=False):
         element.addEventListener(
             "transitionend", _loop_animation.bind(None, element, distance)
         )
+
+def add_text(text, size=18):
+    """
+    Adds text to the page.
+
+    Parameters:
+        - text (str): The text to add to the page.
+        - size (int): The size, in pixels (optional).
+
+    Returns:
+        - The text element.
+
+    Example usage:
+        wizardlib_text = add_text("Wizardlib is cool!")
+    """
+    # linebreak = document.createElement("br");
+    # text = text.replace("\n", "<br>")
+
+    element = document.createElement("p")
+    element.innerText = text
+
+    # Code to make multiline strings work, replace newlines with linebreaks
+    element.innerText.replace("\n", "<br>")
+
+    element.style.fontSize = str(size) + "px"
+
+    canvas = document.getElementById("canvas")
+
+    if canvas:
+        canvas.appendChild(element)
+    else:
+        document.body.appendChild(element)
+
+    return element
+
+
+def add_text_input(placeholder):
+    """
+    Adds a text input to the page.
+
+    Parameters:
+        - placeholder (str): The text to display in the input box.
+
+    Returns:
+        - The text input element.
+
+    Example usage:
+        text_input = add_text_input("Enter your password:")
+    """
+
+    element = document.createElement("input")
+    element.placeholder = placeholder
+
+    canvas = document.getElementById("canvas")
+
+    if canvas:
+        canvas.appendChild(element)
+    else:
+        document.body.appendChild(element)
+
+    return element
