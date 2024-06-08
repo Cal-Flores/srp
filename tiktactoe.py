@@ -38,3 +38,18 @@ def check_for_winner():
     a3 = board[2][0]
     b3 = board[2][1]
     c3 = board[2][2]
+
+     #horizontal check
+    if a1 == b1 == c1 and a1 != 0:
+        return a1
+    if a2 == b2 == c2 and a2 != 0:
+        return a2
+    if a3 == b3 == c3 and a3 != 0:
+        return a3
+    #vertical check
+    if a1 == a2 == a3 and a1 != 0:
+        return a1
+    if b1 == b2 == b3 and b1 != 0:
+        return b1
+    if c1 == c2 == c3 and c1 != 0:
+        return c1
