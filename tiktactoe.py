@@ -53,3 +53,11 @@ def check_for_winner():
         return b1
     if c1 == c2 == c3 and c1 != 0:
         return c1
+
+    #diagonal
+    if a1 == b2 == c3 and a1 != 0:
+        return a1
+    if a3 == b2 == c1 and a3 != 0:
+        return a3
+
+    return 0
