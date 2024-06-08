@@ -8,3 +8,10 @@ def draw_board():
                 mark = symbols[symbol]
                 symbol_text = add_text(mark, 40)
                 position_element(symbol_text, 260 + row_item * 130, 250 + row * 130)
+
+def board_full():
+    is_full = True
+    for row in board:
+       if 0 in row:
+          is_full = False
+    return is_full
