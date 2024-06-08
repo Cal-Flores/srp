@@ -15,3 +15,12 @@ def board_full():
        if 0 in row:
           is_full = False
     return is_full
+
+def computer_move():
+    move_made = False
+    while not move_made:
+        row = random.randint(0, 2)
+        row_item = random.randint(0,2)
+        if board[row][row_item] == 0:
+            board[row][row_item] = 2
+            move_made = True
