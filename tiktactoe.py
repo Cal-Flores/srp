@@ -24,3 +24,17 @@ def computer_move():
         if board[row][row_item] == 0:
             board[row][row_item] = 2
             move_made = True
+
+def check_for_winner():
+    #first row
+    a1 = board[0][0]
+    b1 = board[0][1]
+    c1 = board[0][2]
+    #second row
+    a2 = board[1][0]
+    b2 = board[1][1]
+    c2 = board[1][2]
+    #third row
+    a3 = board[2][0]
+    b3 = board[2][1]
+    c3 = board[2][2]
