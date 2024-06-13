@@ -1,4 +1,4 @@
-const d1WrestlingSchools = [
+const schools = [
     {
         name: "American University",
         conference: "Patriot League"
@@ -317,4 +317,10 @@ const d1WrestlingSchools = [
     }
 ];
 
-console.log(d1WrestlingSchools.length);
+
+
+for (let school in schools) {
+    school[pick] = 5
+}
+
+console.log(schools)
