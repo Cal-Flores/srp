@@ -320,7 +320,13 @@ const schools = [
 
 
 for (let school of schools) {
-    school.pick = 5
+    if (school.name == 'Pennsylvania State University') {
+        school.fly == {
+            name: 'Demitrous Johnson',
+            wins: 0,
+            losses: 0
+        }
+    }
 }
 
 console.log(schools)
