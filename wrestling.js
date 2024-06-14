@@ -320,7 +320,7 @@ const schools = [
 
 
 for (let school of schools) {
-    school[pick] = 5
+    school.pick = 5
 }
 
 console.log(schools)
