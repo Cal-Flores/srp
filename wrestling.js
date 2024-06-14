@@ -319,7 +319,7 @@ const schools = [
 
 
 
-for (let school in schools) {
+for (let school of schools) {
     school[pick] = 5
 }
 
