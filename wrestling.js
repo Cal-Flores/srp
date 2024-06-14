@@ -329,4 +329,4 @@ for (let school of schools) {
     }
 }
 
-console.log(schools)
+console.log(schools[0])
