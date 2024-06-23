@@ -7,3 +7,7 @@ flyWeight = [
 let fly = ['Brandon moreno', 'kai kara france', 'devidson figurdo', 'alex panoja', 'demetrious johnson']
 
 let bantam = ['sean o malley', 'dominick cruz', 'chito vera', 'jose aldo', 'aljmain sterling']
+
+let feather = ['max holloway', 'alex volkanovski', 'ilia topuria', 'brian ortega', '']
+
+let light = []
