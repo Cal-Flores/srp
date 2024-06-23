@@ -10,4 +10,6 @@ let bantam = ['sean o malley', 'dominick cruz', 'chito vera', 'jose aldo', 'aljm
 
 let feather = ['max holloway', 'alex volkanovski', 'ilia topuria', 'brian ortega', '']
 
-let light = []
+let light = ['Dustin poirier', 'islam makachev', 'charles oliviera', 'justin gaethje', '']
+
+let welter = ['']
