@@ -12,4 +12,4 @@ let feather = ['max holloway', 'alex volkanovski', 'ilia topuria', 'brian ortega
 
 let light = ['Dustin poirier', 'islam makachev', 'charles oliviera', 'justin gaethje', '']
 
-let welter = ['']
+let welter = ['Kamru Usman', 'Leon edwards', 'colby covington', 'khamzat chimaev', '']
