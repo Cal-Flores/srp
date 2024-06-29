@@ -15,3 +15,6 @@ let light = ['Dustin poirier', 'islam makachev', 'charles oliviera', 'justin gae
 let welter = ['Kamru Usman', 'Leon edwards', 'colby covington', 'khamzat chimaev', '']
 
 let middle = ['isreal adesanya', 'sean strickland', 'robert whittaker', 'paulo costa', 'dricus du plessis']
+
+
+
