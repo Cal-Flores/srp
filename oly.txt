@@ -28,7 +28,6 @@
 
 
 SERIES 1:
-
 Gon
 Killua
 Kurapika
@@ -45,13 +44,13 @@ SERIES 2:
 Gon
 Kurapika
 Melody
-Shizuku
+Shizuku -NO
 Machi
 Pakunoda
 Phinks
 Uvogin
-Shalnark
-Hisoka
+Shalnark -NO
+Hisoka -NO
 Chrollo
 
 SERIES 3:
@@ -73,10 +72,9 @@ Killua
 Knuckle
 Kite
 Ikalgo
-Nefiropitou
-Methuthuyoupi
+Nefiropitou -NO
+Methuthuyoupi -NO
 Meruem
 Komugi
 Netero
 Shiapouf
-
