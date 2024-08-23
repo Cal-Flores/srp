@@ -63,5 +63,6 @@ Feitan
 Franklin
 Kortopi
 Nobunaga
+Kalluto
 Ging
 Biscuit
