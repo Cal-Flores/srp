@@ -50,7 +50,7 @@ Pakunoda
 Phinks
 Uvogin
 Shalnark
-Hisoka 
+Hisoka
 Chrollo
 
 SERIES 3:
@@ -78,3 +78,11 @@ Meruem
 Komugi
 Netero
 Shiapouf
+
+
+SERIES 1
+shuriken Naruto
+Kakashi
+Hinata
+Sakura
+
