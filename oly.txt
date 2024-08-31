@@ -98,3 +98,5 @@ Sage Naruto
 Gaara
 Itachi
 Neji
+Tsunade
+Asuma
